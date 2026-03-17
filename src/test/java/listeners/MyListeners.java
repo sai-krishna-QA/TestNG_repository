@@ -1,19 +1,17 @@
 package listeners;
-
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import AT.TestngFramework.ElementUtils;
+import AT.TestngFramework.commonUtils;
 
-import utils.CommonUtils;
 
 public class MyListeners implements ITestListener {
 
@@ -23,7 +21,7 @@ public class MyListeners implements ITestListener {
 	
 	@Override
 	public void onStart(ITestContext context) {
-		extentReports = CommonUtils.generateExtentReport();
+		extentReports = commonUtils.generateExtentReport();
 	}
 
 	@Override
@@ -44,7 +42,7 @@ public class MyListeners implements ITestListener {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		String screenshotPath = CommonUtils.takeScreenshot(driver, result.getName());
+		String screenshotPath = commonUtils.takeScreenshot(driver, result.getName());
 		extentTest.addScreenCaptureFromPath(screenshotPath);
 		extentTest.log(Status.INFO,result.getThrowable());
 	}

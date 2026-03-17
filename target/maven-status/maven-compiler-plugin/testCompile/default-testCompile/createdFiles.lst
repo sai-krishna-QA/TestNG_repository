@@ -1,0 +1,13 @@
+Pages\Accountsuccesspage.class
+tests\searchTest.class
+Pages\loginpage.class
+Pages\AccountLogoutPage.class
+Pages\AccountPage.class
+base\Base.class
+Pages\SearchPage.class
+Pages\Registerpage.class
+tests\RegisterTest.class
+Pages\Newsletter_Subscription_page.class
+tests\LogoutTest.class
+Pages\homeepage.class
+tests\loginTest.class
