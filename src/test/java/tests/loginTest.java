@@ -1,18 +1,18 @@
 package tests;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import base.Base;
+import AT.TestngFramework.commonUtils;
 import Pages.homeepage;
+import base.Base;
+import AT.TestngFramework.ElementUtils;
 
 
-public class login extends Base {
+public class loginTest extends Base {
 
 	public WebDriver driver;
 	
@@ -24,8 +24,6 @@ public class login extends Base {
 		loginpage = homeepage.navigate_to_login_page();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-
-		
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		/*prop = commonUtils.loadPropertiesFile();
 		driver = new ChromeDriver();
@@ -46,13 +44,19 @@ public class login extends Base {
 		closeBrowser(driver);
 		}
 		
-
-	@Test(priority = 1)
-	public void Verify_login_with_valid_credentails() {
+@Test
+	//@Test(priority=1,dataProvider="loginDataProvider")
+	//public void Verify_login_with_valid_credentails(HashMap<String, String> hMap){
+		public void Verify_login_with_valid_credentails(){
 
 		Assert.assertEquals(driver.getTitle(), "Account Login");
+		
 		loginpage.Enterfirstname(prop.getProperty("emailid"));
+		 //loginpage.Enterfirstname(hMap.get("Username"));
+		
 		loginpage.Enterpassword(prop.getProperty("validpassword"));
+		// loginpage.Enterpassword(hMap.get("Password"));
+
 		AccountPage = loginpage.Clickonloginbutton();
 		Assert.assertTrue(AccountPage.isUserLoggedIn());
 		Assert.assertEquals(driver.getTitle(), "My Account");
@@ -64,12 +68,19 @@ public class login extends Base {
 //		Assert.assertEquals(driver.getTitle(), "My Account");
 	}
 
+	/*
+	 * @DataProvider(name="loginDataProvider") public Object[][]
+	 * dataSupplierMethod() { MyXLSReader myXLSReader = new
+	 * MyXLSReader("\\src\\test\\resources\\ProjectData.xlsx"); Object[][] data =
+	 * CommonUtils.getTestData(myXLSReader,"Login","DataDrivenSheet"); return data;
+	 	}*/
+	
 	@Test(priority = 2)
 	public void Verify_login_with_invalid_credentails() {
 
 		
 		Assert.assertEquals(driver.getTitle(), "Account Login");
-		loginpage.Enterfirstname(prop.getProperty("emailidtwo"));
+		loginpage.Enterfirstname(commonUtils.generatenewemail());
 		loginpage.Enterpassword(prop.getProperty("invalidpassword"));
 		AccountPage = loginpage.Clickonloginbutton();
 		Assert.assertEquals(loginpage.getwarningmessage(),"Warning: No match for E-Mail Address and/or Password.");
@@ -91,7 +102,7 @@ public class login extends Base {
 		
 		
 		Assert.assertEquals(driver.getTitle(), "Account Login");
-		loginpage.Enterfirstname(prop.getProperty("emailid"));
+		loginpage.Enterfirstname(commonUtils.generatenewemail());
 		loginpage.Enterpassword(prop.getProperty("invalidpassword"));
 		AccountPage = loginpage.Clickonloginbutton();
 		Assert.assertEquals(loginpage.getwarningmessage(),"Warning: No match for E-Mail Address and/or Password.");
@@ -138,9 +149,7 @@ public class login extends Base {
 
 	}
 
-	public static String Newemail() {
-
-		return "Saikrishna" + System.currentTimeMillis() + "@gmail.com";
-
-	}
+	
 }
+
+

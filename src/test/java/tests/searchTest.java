@@ -7,14 +7,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import AT.TestngFramework.commonUtils;
 import Pages.AccountPage;
 import Pages.SearchPage;
 import Pages.homeepage;
 import Pages.loginpage;
 import base.Base;
+import AT.TestngFramework.ElementUtils;
 
-public class search extends Base {
+public class searchTest extends Base {
 	WebDriver driver;
 
 	@BeforeMethod

@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import AT.TestngFramework.MyXLSReader;
 import AT.TestngFramework.commonUtils;
 import Pages.AccountLogoutPage;
 import Pages.AccountPage;
@@ -30,12 +31,16 @@ public class Base {
 	public loginpage loginpage;
 	public AccountLogoutPage AccountLogoutPage;
 	public SearchPage SearchPage;
+	public MyXLSReader myXLSReader;
 
 	public 	WebDriver openApplicationURLInTheBrowser() {
 		
 		prop = commonUtils.loadPropertiesFile();
-		String browserName = prop.getProperty("browserName");
-		 driver = null;
+		//String browserName = prop.getProperty("browserName");
+		myXLSReader = new MyXLSReader("\\src\\test\\resources\\projectdata.xlsx");
+		
+		String browserName = myXLSReader.getCellData("DataSheet",2,12);
+
 		
 		if(browserName.equals("chrome")) {
 			 driver = new ChromeDriver();
@@ -47,7 +52,8 @@ public class Base {
 			 driver = new SafariDriver();
 		}
 		driver.manage().window().maximize();
-		driver.get(prop.getProperty("url"));
+	//	driver.get(prop.getProperty("url"));
+		driver.get(myXLSReader.getCellData("DataSheet",2,1));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		return driver;
 

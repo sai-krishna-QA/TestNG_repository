@@ -2,22 +2,20 @@ package tests;
 
 import java.time.Duration;
 import java.util.Properties;
-
+import AT.TestngFramework.ElementUtils;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import AT.TestngFramework.commonUtils;
 import Pages.AccountPage;
 import Pages.Accountsuccesspage;
 import Pages.Newsletter_Subscription_page;
-import Pages.Registerpage;
 import Pages.homeepage;
 import base.Base;
 
-public class Register extends Base {
+public class RegisterTest extends Base {
 
 	public WebDriver driver;
 
@@ -59,8 +57,9 @@ public class Register extends Base {
 	public void Verify_RegisterAccount_using_Mandatory_fields() {
 
 		Registerpage.Enterfirstname(prop.getProperty("firstname"));
+		//Registerpage.Enterlastname(myXLSReader.getCellData("DataSheet",2,3));
 		Registerpage.Enterlastname(prop.getProperty("lastname"));
-		Registerpage.Enteremail(generatenewemail());
+		Registerpage.Enteremail(commonUtils.generatenewemail());
 		Registerpage.Entertelephone(prop.getProperty("telephone"));
 		Registerpage.EnterValidpassword(prop.getProperty("validpassword"));
 		Registerpage.Enterconfirmpassword(prop.getProperty("Confirmpassword"));
@@ -84,7 +83,7 @@ public class Register extends Base {
 
 		Registerpage.Enterfirstname(prop.getProperty("firstname"));
 		Registerpage.Enterlastname(prop.getProperty("lastname"));
-		Registerpage.Enteremail(generatenewemail());
+		Registerpage.Enteremail(commonUtils.generatenewemail());
 		Registerpage.Entertelephone(prop.getProperty("telephone"));
 		Registerpage.EnterValidpassword(prop.getProperty("validpassword"));
 		Registerpage.Enterconfirmpassword(prop.getProperty("Confirmpassword"));
@@ -106,11 +105,11 @@ public class Register extends Base {
 	@Test(priority = 3)
 	public void VerifyRegisteringBysubscribingtoothenewsletter() {
 
-		Registerpage Registerpage = new Registerpage(driver);
+		//Registerpage Registerpage = new Registerpage(driver);
 
 		Registerpage.Enterfirstname(prop.getProperty("firstname"));
 		Registerpage.Enterlastname(prop.getProperty("lastname"));
-		Registerpage.Enteremail(generatenewemail());
+		Registerpage.Enteremail(commonUtils.generatenewemail());
 		Registerpage.Entertelephone(prop.getProperty("telephone"));
 		Registerpage.EnterValidpassword(prop.getProperty("validpassword"));
 		Registerpage.Enterconfirmpassword(prop.getProperty("Confirmpassword"));
@@ -141,11 +140,11 @@ public class Register extends Base {
 	@Test(priority = 4)
 	public void VerifyRegisteringBynotsubscribingtoothenewsletter() {
 
-		Registerpage Registerpage = new Registerpage(driver);
+	//	Registerpage Registerpage = new Registerpage(driver);
 
 		Registerpage.Enterfirstname(prop.getProperty("firstname"));
 		Registerpage.Enterlastname(prop.getProperty("lastname"));
-		Registerpage.Enteremail(generatenewemail());
+		Registerpage.Enteremail(commonUtils.generatenewemail());
 		Registerpage.Entertelephone(prop.getProperty("telephone"));
 		Registerpage.EnterValidpassword(prop.getProperty("validpassword"));
 		Registerpage.Enterconfirmpassword(prop.getProperty("Confirmpassword"));
@@ -168,7 +167,5 @@ public class Register extends Base {
 	// =========================
 	// Utility
 	// =========================
-	public static String generatenewemail() {
-		return "Saikrishna" + System.currentTimeMillis() + "@gmail.com";
-	}
+	
 }

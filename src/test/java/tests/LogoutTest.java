@@ -1,25 +1,23 @@
 package tests;
 
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
+import AT.TestngFramework.ElementUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import AT.TestngFramework.commonUtils;
 import Pages.AccountLogoutPage;
 import Pages.AccountPage;
 import Pages.homeepage;
 import Pages.loginpage;
 import base.Base;
 
-public class Logout extends Base {
+public class LogoutTest extends Base {
 
 	public WebDriver driver;
 	
-
+	
 	@BeforeMethod
 	public void setup() {
 		
@@ -102,4 +100,3 @@ public class Logout extends Base {
 
 	}
 }
-//72 : 20 min 

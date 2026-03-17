@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite">
+ <listeners>
+  	<listener class-name="listeners.MyListeners"></listener>
+  </listeners>
   <test thread-count="5" name="Test">
     <classes>
-    <class name="tests.login"/>
-      <class name="tests.Register"/>
-      <class name="tests.search"/>
-      <class name="tests.Logout"/>
+    <class name="tests.loginTest"/>
+      <class name="tests.RegisterTest"/>
+      <class name="tests.searchTest"/>
+      <class name="tests.LogoutTest"/>
       
     </classes>
   </test> <!-- Test -->

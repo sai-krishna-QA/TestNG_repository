@@ -3,17 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.login">
+      <class name="tests.searchTest">
         <methods>
-          <include name="Verify_login_with_invalid_email_and_valid_pwd"/>
-          <include name="Verifyloginwithoutanycredentials"/>
-          <include name="Verify_login_with_valid_email_and_invalid_pwd"/>
           <include name="setup"/>
-          <include name="Verify_login_with_invalid_credentails"/>
           <include name="teardown"/>
-          <include name="Verify_login_with_valid_credentails"/>
+          <include name="searching_with_a_non_existing_Product_Name"/>
+          <include name="searching_with_an_existing_Product_Name"/>
+          <include name="searching_without_providing_any_Product_Name"/>
         </methods>
-      </class> <!-- tests.login -->
+      </class> <!-- tests.searchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
